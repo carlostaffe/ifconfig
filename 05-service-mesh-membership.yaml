@@ -1,0 +1,19 @@
+---
+# This file registers Roadhog to the OpenShift Service Mesh (Istio)
+# Once this file is applied to OpenShift, the operators take over with routing
+apiVersion: maistra.io/v1
+kind: ServiceMeshMember
+metadata:
+  # name must be "default"
+  name: default
+  namespace: ifconfig
+  labels:
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-dev
+spec:
+  controlPlaneRef:
+    # Namespace of the Control Plane
+    namespace: istio-system
+    # Name of the Control Plane
+    name: default-control-plane
+...

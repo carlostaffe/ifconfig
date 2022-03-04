@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  namespace: ifconfig
+  name: ifconfig-gateway
+  annotations:
+    haproxy.router.openshift.io/balance: leastconn
+    #haproxy.router.openshift.io/disable_cookies: "true"
+    maistra.io/manageRoute: "false"
+
+spec:
+  selector:
+    istio: internal-ingressgateway
+  servers:
+    - hosts:
+        - 'ifconfig.mesh-internal.dev.dev.ethos.usw2.ctv.gg'
+      port:
+        name: http-internal
+        number: 80
+        protocol: HTTP

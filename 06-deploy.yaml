@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ifconfig
+  namespace: ifconfig
+  labels:
+    app: ifconfig
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-dev
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ifconfig
+      app.kubernetes.io/instance: ifconfig-dev
+  template: 
+    metadata:
+      labels:
+        app: ifconfig
+        app.kubernetes.io/name: ifconfig
+        app.kubernetes.io/instance: ifconfig-dev
+      annotations:
+        sidecar.istio.io/inject: "true"
+        #sidecar.istio.io/interceptionMode: REDIRECT
+        sidecar.istio.io/rewriteAppHTTPProbers: "true"
+    spec:
+      containers:
+      - name: ifconfig
+        image: quay.io/carlos_taffernaberry/ifconfig.io:2
+        #imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+#        livenessProbe:
+#          httpGet:
+#            path: /index.html
+#            port: http
+#          initialDelaySeconds: 5
+#          periodSeconds: 10
+#        readinessProbe:
+#          httpGet:
+#            path: /otro.html
+#            port: 8080
+#          initialDelaySeconds: 15
+#          periodSeconds: 20
+      imagePullSecrets:
+      - name: registry-keys

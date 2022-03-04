@@ -1,0 +1,23 @@
+# The Service resource represents a logical endpoint internal to the kubernetes cluster
+# The naming format for all Services is my-svc.my-namespace.svc.cluster-domain.local
+# Kubernetes handles routing requests to the svc endpoint to anywhere the pod is running
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ifconfig
+  namespace: ifconfig
+  labels:
+    app: ifconfig
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-dev
+spec:
+  selector:
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-dev
+  ports:
+    - protocol: TCP
+      port: 8080
+      name: http
+      targetPort: http
+      appProtocol: http

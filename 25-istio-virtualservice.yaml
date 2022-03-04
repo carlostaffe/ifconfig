@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ifconfig-internal
+  namespace: ifconfig
+  labels:
+    app: ifconfig
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-dev
+spec:
+  gateways:
+    - ifconfig-gateway
+  hosts:
+    - 'ifconfig.mesh-internal.dev.dev.ethos.usw2.ctv.gg'
+  http:
+    - match:
+        - uri:
+            prefix: "/"
+      route:
+        - destination:
+            host: ifconfig.svc.cluster.local
+            port:
+              number: 8080
