@@ -6,18 +6,18 @@ metadata:
   labels:
     app: ifconfig
     app.kubernetes.io/name: ifconfig
-    app.kubernetes.io/instance: ifconfig-dev
+    app.kubernetes.io/instance: ifconfig-stg
 spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: ifconfig
-      app.kubernetes.io/instance: ifconfig-dev
+      app.kubernetes.io/instance: ifconfig-stg
   template: 
     metadata:
       labels:
         app: ifconfig
         app.kubernetes.io/name: ifconfig
-        app.kubernetes.io/instance: ifconfig-dev
+        app.kubernetes.io/instance: ifconfig-stg
       annotations:
         sidecar.istio.io/inject: "true"
         #sidecar.istio.io/interceptionMode: REDIRECT

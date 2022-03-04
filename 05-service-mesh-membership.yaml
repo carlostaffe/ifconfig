@@ -9,7 +9,7 @@ metadata:
   namespace: ifconfig
   labels:
     app.kubernetes.io/name: ifconfig
-    app.kubernetes.io/instance: ifconfig-dev
+    app.kubernetes.io/instance: ifconfig-stg
 spec:
   controlPlaneRef:
     # Namespace of the Control Plane

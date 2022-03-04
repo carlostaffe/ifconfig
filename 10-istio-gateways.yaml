@@ -13,7 +13,7 @@ spec:
     istio: internal-ingressgateway
   servers:
     - hosts:
-        - 'ifconfig.mesh-internal.dev.dev.ethos.usw2.ctv.gg'
+        - 'ifconfig.mesh-internal.stg.stg.ethos.usw2.ctv.gg'
       port:
         name: http-internal
         number: 80

@@ -6,12 +6,12 @@ metadata:
   labels:
     app: ifconfig
     app.kubernetes.io/name: ifconfig
-    app.kubernetes.io/instance: ifconfig-dev
+    app.kubernetes.io/instance: ifconfig-stg
 spec:
   gateways:
     - ifconfig-gateway
   hosts:
-    - 'ifconfig.mesh-internal.dev.dev.ethos.usw2.ctv.gg'
+    - 'ifconfig.mesh-internal.stg.stg.ethos.usw2.ctv.gg'
   http:
     - match:
         - uri:

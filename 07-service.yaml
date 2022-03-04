@@ -10,11 +10,11 @@ metadata:
   labels:
     app: ifconfig
     app.kubernetes.io/name: ifconfig
-    app.kubernetes.io/instance: ifconfig-dev
+    app.kubernetes.io/instance: ifconfig-stg
 spec:
   selector:
     app.kubernetes.io/name: ifconfig
-    app.kubernetes.io/instance: ifconfig-dev
+    app.kubernetes.io/instance: ifconfig-stg
   ports:
     - protocol: TCP
       port: 8080
