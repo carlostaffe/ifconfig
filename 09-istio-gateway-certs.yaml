@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  namespace: istio-system
+  name: ifconfig-gateway-cert
+  labels:
+    app: ifconfig
+    app.kubernetes.io/name: ifconfig
+    app.kubernetes.io/instance: ifconfig-stg
+spec:
+  dnsNames:
+    - ifconfig.mesh.stg.stg.ethos.usw2.ctv.gg
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-issuer
+  renewBefore: 360h0m0s
+  secretName: ifconfig-gateway-cert

@@ -10,11 +10,15 @@ metadata:
 
 spec:
   selector:
-    istio: internal-ingressgateway
+    istio: external-ingressgateway
   servers:
     - hosts:
-        - 'ifconfig.mesh-internal.stg.stg.ethos.usw2.ctv.gg'
+        - 'ifconfig.mesh.stg.stg.ethos.usw2.ctv.gg'
       port:
-        name: http-internal
-        number: 80
-        protocol: HTTP
+        name: https-external
+        number: 443
+        protocol: HTTPS
+      tls:
+        mode: SIMPLE
+        credentialName: ifconfig-gateway-cert
+        httpsRedirect: true 

@@ -1,0 +1,18 @@
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-traffic-without-x-token
+  namespace: ifconfig
+spec:
+  selector:
+    matchLabels:
+      app: ifconfig
+  action: DENY
+  rules:
+  - to:
+    - operation:
+        methods: ["GET"]
+    when:
+    - key: request.headers[X-Ifconfig-Auth]
+      notValues: ["1"]

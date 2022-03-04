@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: ifconfig-internal
+  name: ifconfig-external
   namespace: ifconfig
   labels:
     app: ifconfig
@@ -11,13 +11,13 @@ spec:
   gateways:
     - ifconfig-gateway
   hosts:
-    - 'ifconfig.mesh-internal.stg.stg.ethos.usw2.ctv.gg'
+    - 'ifconfig.mesh.stg.stg.ethos.usw2.ctv.gg'
   http:
     - match:
         - uri:
             prefix: "/"
       route:
         - destination:
-            host: ifconfig.svc.cluster.local
+            host: ifconfig.ifconfig.svc.cluster.local
             port:
               number: 8080

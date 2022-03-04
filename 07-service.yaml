@@ -19,5 +19,5 @@ spec:
     - protocol: TCP
       port: 8080
       name: http
-      targetPort: http
+      targetPort: 8080
       appProtocol: http

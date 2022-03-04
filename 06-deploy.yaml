@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: ifconfig
-        image: quay.io/carlos_taffernaberry/ifconfig.io:2
+        image: quay.io/carlos_taffernaberry/ifconfig.io:3
         #imagePullPolicy: Always
         imagePullPolicy: IfNotPresent
         ports:
